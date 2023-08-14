@@ -4,6 +4,7 @@ import os
 import tkinter as tk
 from shutil import copy2
 from tkinter import filedialog
+from pdfminer.high_level import extract_text
 
 def split_pdf(input_pdf):
     with open(input_pdf, "rb") as pdf_file:
@@ -15,7 +16,15 @@ def split_pdf(input_pdf):
             writer = PyPDF2.PdfWriter()
             writer.add_page(reader.pages[i])
 
-            output_pdf = f"payslip_{i}.pdf"  
+            # Extracting text and getting the third line for naming
+            text = extract_text_from_pdf_page(input_pdf, i)
+            third_line = text.splitlines()[2] if len(text.splitlines()) >= 3 else f"payslip_{i}"
+
+            # Replacing invalid characters for filenames
+            for ch in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
+                third_line = third_line.replace(ch, "_")
+
+            output_pdf = f"{third_line}.pdf"  
             with open(output_pdf, "wb") as output_file:
                 writer.write(output_file)
 
@@ -23,9 +32,13 @@ def split_pdf(input_pdf):
 
     return payslips
 
+def extract_text_from_pdf_page(pdf_path, page_num):
+    return extract_text(pdf_path, page_numbers=[page_num])
+
 def copy_file_to_destinations(payslip, folders_listbox):
     folder = filedialog.askdirectory(title="Select Folder")
     if folder:
+        print(f"Selected folder: {folder}")
         folders_listbox.insert(tk.END, folder)
 
 FOLDER_GROUPS_FILE = "folder_groups.json"

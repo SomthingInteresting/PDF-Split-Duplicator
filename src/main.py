@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 
 import tkinter as tk
+import os
 from tkinter import filedialog, messagebox, simpledialog
 from pdf_operations import split_pdf, copy_file_to_destinations, save_folder_group, load_folder_groups, load_selected_group
+from shutil import copy2
 
 def main():
     root = tk.Tk()
@@ -62,7 +64,24 @@ def main():
     button_load_group.pack()
 
     # Button to perform the copy action
-    button_copy = tk.Button(root, text="Copy to Selected Folders", command=lambda: [copy_file_to_destinations(payslip_var.get(), folder) for folder in folders_listbox.get(0, tk.END)])
+    def copy_selected_payslip_to_folders():
+        payslip = payslip_var.get()
+        print(f"Copying {payslip} to:")
+        success = True
+        for folder in folders_listbox.get(0, tk.END):
+            dest = os.path.join(folder, os.path.basename(payslip))
+            print(f" -> {dest}")
+            try:
+                copy2(payslip, dest)
+            except Exception as e:
+                print(f"Failed to copy to {dest}. Error: {e}")
+                success = False
+        if success:
+            messagebox.showinfo("Success", f"Successfully copied {payslip} to selected folders.")
+        else:
+            messagebox.showerror("Error", f"Failed to copy {payslip} to one or more folders. Check the console for details.")
+
+    button_copy = tk.Button(root, text="Copy to Selected Folders", command=copy_selected_payslip_to_folders)
     button_copy.pack()
 
     root.lift()
