@@ -3,7 +3,7 @@
 import tkinter as tk
 import os
 from tkinter import filedialog, messagebox, simpledialog
-from pdf_operations import split_pdf, copy_file_to_destinations, save_folder_group, load_folder_groups, load_selected_group
+from pdf_operations import split_pdf, copy_file_to_destinations, save_folder_group, load_folder_groups, load_selected_group, remove_folder_group
 from shutil import copy2
 
 def main():
@@ -18,9 +18,19 @@ def main():
     dropdown = tk.OptionMenu(root, payslip_var, *payslips)
     dropdown.pack()
 
-    # Listbox to show selected folders
-    folders_listbox = tk.Listbox(root)
-    folders_listbox.pack()
+    # Frame to contain Listbox and Scrollbar
+    folder_frame = tk.Frame(root)
+    folder_frame.pack(fill=tk.BOTH, expand=1)
+
+    # Horizontal Scrollbar for the Listbox
+    h_scroll = tk.Scrollbar(folder_frame, orient=tk.HORIZONTAL)
+    h_scroll.pack(side=tk.BOTTOM, fill=tk.X)
+
+    # Listbox to show selected folders with associated scrollbar
+    folders_listbox = tk.Listbox(folder_frame, xscrollcommand=h_scroll.set)
+    folders_listbox.pack(side=tk.TOP, fill=tk.BOTH, expand=1)
+
+    h_scroll.config(command=folders_listbox.xview)
 
     # Button to add folders
     button_add = tk.Button(root, text="Add Folder", command=lambda: copy_file_to_destinations(payslip_var.get(), folders_listbox))
@@ -62,6 +72,19 @@ def main():
 
     button_load_group = tk.Button(root, text="Load Group", command=load_group)
     button_load_group.pack()
+
+    # Button to remove selected group from saved groups listbox and json file
+    def remove_group():
+        selected_group = groups_listbox.get(groups_listbox.curselection())
+        if selected_group:
+            # Remove from the listbox
+            groups_listbox.delete(groups_listbox.curselection())
+            # Remove from the json file
+            remove_folder_group(selected_group)
+            messagebox.showinfo("Removed", f"Group '{selected_group}' has been removed.")
+
+    button_remove_group = tk.Button(root, text="Remove Group", command=remove_group)
+    button_remove_group.pack()
 
     # Button to perform the copy action
     def copy_selected_payslip_to_folders():

@@ -65,3 +65,12 @@ def load_selected_group(group_name):
             data = json.load(f)
         return data.get(group_name, [])
     return []
+
+def remove_folder_group(group_name):
+    if os.path.exists(FOLDER_GROUPS_FILE):
+        with open(FOLDER_GROUPS_FILE, "r") as f:
+            data = json.load(f)
+        if group_name in data:
+            del data[group_name]
+            with open(FOLDER_GROUPS_FILE, "w") as f:
+                json.dump(data, f)
