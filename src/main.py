@@ -2,7 +2,8 @@
 
 import tkinter as tk
 from tkinter import filedialog
-from pdf_operations import split_pdf, copy_to_folders
+from shutil import copy
+from pdf_operations import split_pdf, copy_to_folders, copy_file_to_destinations
 
 def main():
     root = tk.Tk()
@@ -25,9 +26,10 @@ def main():
     button_add.pack()
 
     # Button to perform the copy action
-    button_copy = tk.Button(root, text="Copy to Selected Folders", command=lambda: [copy(payslip_var.get(), folder) for folder in folders_listbox.get(0, tk.END)])
+    button_copy = tk.Button(root, 
+                            text="Copy to Selected Folders", 
+                            command=lambda: copy_file_to_destinations(payslip_var.get(), folders_listbox.get(0, tk.END)))
     button_copy.pack()
-
 
     root.lift()
     root.attributes('-topmost', True)

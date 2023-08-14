@@ -25,3 +25,8 @@ def copy_to_folders(payslip, folders_listbox):
     folder = filedialog.askdirectory(title="Select Folder")
     if folder:
         folders_listbox.insert(tk.END, folder)
+
+def copy_file_to_destinations(file_path, destinations):
+    """Copy a file to multiple destinations."""
+    for dest in destinations:
+        copy(file_path, dest)
