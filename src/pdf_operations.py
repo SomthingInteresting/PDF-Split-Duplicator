@@ -1,4 +1,5 @@
 import PyPDF2
+import tkinter as tk
 from shutil import copy
 from tkinter import filedialog
 
