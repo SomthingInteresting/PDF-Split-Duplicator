@@ -1,6 +1,6 @@
 import PyPDF2
 import tkinter as tk
-from shutil import copy
+from shutil import copy2  # Use copy2 to also copy file metadata
 from tkinter import filedialog
 
 def split_pdf(input_pdf):
@@ -21,12 +21,11 @@ def split_pdf(input_pdf):
 
     return payslips
 
-def copy_to_folders(payslip, folders_listbox):
-    folder = filedialog.askdirectory(title="Select Folder")
-    if folder:
-        folders_listbox.insert(tk.END, folder)
-
-def copy_file_to_destinations(file_path, destinations):
-    """Copy a file to multiple destinations."""
-    for dest in destinations:
-        copy(file_path, dest)
+def copy_file_to_destinations(file_name, destinations):
+    try:
+        for dest in destinations:
+            copy2(file_name, dest)
+        return True
+    except Exception as e:
+        print(e)  # Log the exception for debugging purposes
+        return False
