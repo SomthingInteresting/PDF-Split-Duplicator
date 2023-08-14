@@ -8,6 +8,7 @@ from shutil import copy2
 
 def main():
     root = tk.Tk()
+    root.title("PDFPorter")
 
     # Create a drop-down list of payslips
     input_pdf = filedialog.askopenfilename(title="Select Payroll PDF", filetypes=[("PDF Files", "*.pdf")])
