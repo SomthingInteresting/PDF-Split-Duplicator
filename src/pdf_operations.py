@@ -10,14 +10,22 @@ def split_pdf(input_pdf):
     with open(input_pdf, "rb") as pdf_file:
         reader = PyPDF2.PdfReader(pdf_file)
         num_pages = len(reader.pages)
+        
+        if num_pages == 0:
+            return []
+
         payslips = []
 
         for i in range(num_pages):
+            text = extract_text_from_pdf_page(input_pdf, i)
+            
+            # Skip processing if the page is blank
+            if not text.strip():
+                continue
+
             writer = PyPDF2.PdfWriter()
             writer.add_page(reader.pages[i])
 
-            # Extracting text and getting the third line for naming
-            text = extract_text_from_pdf_page(input_pdf, i)
             third_line = text.splitlines()[2] if len(text.splitlines()) >= 3 else f"payslip_{i}"
 
             # Replacing invalid characters for filenames
