@@ -101,6 +101,7 @@ _Saving, Loading, and Removing Folder Groups_
 - [ ] **Change Icon**: Create a custom icon for the application.
 - [ ] **Split Page Pattern**: Option to split PDFs based on a pattern of pages (e.g., split every 3 pages).
 - [ ] **PDF Naming**: Option to name split PDFs based on different lines or patterns within the document.
+- [ ] **No Console**: Use the no console flag to run the application without a terminal window for future executables.
 
 Feel free to suggest more improvements or report any issues you encounter!
 
