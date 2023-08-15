@@ -28,10 +28,10 @@ There are two routes for installation:
 For most users who don't intend to develop or modify the software, the easiest route is to use the provided executables.
 
 **Windows**:
-- [Download the Windows Executable](./dist/PDFPorter_Windows.exe) and run it.
+- [Download the Windows Executable](executables/PDFPorter-Windows-V1.exe) and run it.
 
 **Mac**:
-- [Download the Mac Executable](./dist/PDFPorter_Mac.app) and run it.
+- [Download the Mac Executable](executables/PDFPorter-MacOS-V1.exe) and run it.
 
 > **Note**: Depending on your system settings, you might need to allow the app to run from an unidentified developer. Always make sure you trust software before running it.
 
