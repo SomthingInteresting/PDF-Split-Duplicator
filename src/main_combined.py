@@ -30,7 +30,7 @@ def split_pdf(input_pdf):
             writer = PyPDF2.PdfWriter()
             writer.add_page(reader.pages[i])
 
-            third_line = text.splitlines()[2] if len(text.splitlines()) >= 3 else f"payslip_{i}"
+            third_line = text.splitlines()[0] if len(text.splitlines()) >= 3 else f"payslip_{i}"
 
             # Replacing invalid characters for filenames
             for ch in ['/', '\\', ':', '*', '?', '"', '<', '>', '|']:
