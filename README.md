@@ -1,4 +1,4 @@
-![Logo](resources/images/logo.png)
+<img src="resources/images/logo.png" width="300">
 
 **PDFPorter** is a desktop application designed to ease the management of PDF files, specifically for splitting PDFs based on their content and assisting in the process of distributing these splits.
 
