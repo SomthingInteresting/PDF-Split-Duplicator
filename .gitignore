@@ -1,3 +1,46 @@
 myenv/
 
 *.pdf
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment Directories
+.env
+.venv/
+*.venv/
+*.env/
+venv/
+env/
+ENV/
+
+# Logs and databases
+*.log
+*.sqlite
+
+# OS Files
+.DS_Store  # Mac OS folder settings
+Thumbs.db  # Windows image cache
+Desktop.ini
+
+# IDEs/Editors
+# Visual Studio Code
+.vscode/
+# PyCharm
+.idea/
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Executables for the app
+dist/
+
+# Other
+*.bak
+*.swp
+*.swo
