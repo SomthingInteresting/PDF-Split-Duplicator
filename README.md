@@ -1,4 +1,4 @@
-# PDFPorter: PDF Processing Tool
+![Logo](resources/images/logo.png)
 
 **PDFPorter** is a desktop application designed to ease the management of PDF files, specifically for splitting PDFs based on their content and assisting in the process of distributing these splits.
 
