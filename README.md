@@ -31,7 +31,7 @@ For most users who don't intend to develop or modify the software, the easiest r
 - [Download the Windows Executable](https://drive.proton.me/urls/JQWYXHPB6G#WlA78E89knNO) and run it.
 
 **Mac**:
-- [Download the Mac Executable](https://drive.proton.me/urls/JQWYXHPB6G#WlA78E89knNO) and run it.
+- [Download the Mac Executable](https://drive.proton.me/urls/W26F4P5GHW#8jP2Zf3hN6NK) and run it.
 
 > **Note**: Depending on your system settings, you might need to allow the app to run from an unidentified developer. Always make sure you trust software before running it.
 
