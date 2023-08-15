@@ -1,4 +1,5 @@
 myenv/
+executables/
 
 *.pdf
 
@@ -44,3 +45,4 @@ dist/
 *.bak
 *.swp
 *.swo
+*.json
