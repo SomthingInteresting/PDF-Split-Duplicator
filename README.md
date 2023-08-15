@@ -43,7 +43,7 @@ For those looking to develop, modify, or run the software from source:
 
 2. **Clone the repository**:
     ```bash
-    git clone https://github.com/your_username/PDFPorter.git
+    git clone https://github.com/SomthingInteresting/PDFPorter.git
     cd PDFPorter
     ```
 
@@ -98,7 +98,9 @@ _Saving, Loading, and Removing Folder Groups_
 - [ ] **User Profiles**: Implement user profiles with customizable settings and themes.
 - [ ] **Batch Operations**: Allow users to process multiple master PDFs at once.
 - [ ] **Localization**: Add support for multiple languages and regional settings.
-- [ ] **Portable Version**: Offer a portable version of the application for use without installation.
+- [ ] **Change Icon**: Create a custom icon for the application.
+- [ ] **Split Page Pattern**: Option to split PDFs based on a pattern of pages (e.g., split every 3 pages).
+- [ ] **PDF Naming**: Option to name split PDFs based on different lines or patterns within the document.
 
 Feel free to suggest more improvements or report any issues you encounter!
 
