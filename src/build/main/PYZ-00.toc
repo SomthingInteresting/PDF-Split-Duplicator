@@ -1,2 +1,0 @@
-('/Users/quddusrahman/Documents/Projects/PayRollApp/src/build/main/PYZ-00.pyz',
- [])
